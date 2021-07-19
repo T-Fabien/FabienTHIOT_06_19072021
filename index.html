@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FishEye</title>
+    <!-- Kits -->
+    <!--Font Awsome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/style.min.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        class="header_logo"
+        src="./images/logo/ohmyfood.png"
+        alt="ohmyfood"
+      />
+    </header>
+    <div class="location">
+      <div class="location_container">
+        <i class="fas fa-map-marker-alt"></i>
+        <p class="city">Paris, Belleville</p>
+      </div>
+    </div>
+    <section class="intro_homepage">
+      <div class="intro_container">
+        <h1 class="intro_title">Réservez le menu qui vous convient</h1>
+        <p>
+          Découvrez des restaurants d'exception, sélectionnés par nos soins.
+        </p>
+        <a href="#restaurants" class="intro_btn btn"
+          >Explorer nos restaurants</a
+        >
+      </div>
+    </section>
+    <section class="operation_part">
+      <div class="operation_container">
+        <h2 class="operation_title">Fonctionnement</h2>
+        <div class="operation_tutorial_container">
+          <div class="operation_tutorial_content">
+            <p class="operation_tutorial_number">1</p>
+            <i class="fas fa-mobile-alt"></i>
+            <p>Choisissez un restaurant</p>
+          </div>
+          <div class="operation_tutorial_content">
+            <p class="operation_tutorial_number">2</p>
+            <i class="fas fa-list-ul"></i>
+            <p>Choisissez votre menu</p>
+          </div>
+          <div class="operation_tutorial_content">
+            <p class="operation_tutorial_number">3</p>
+            <i class="fas fa-store"></i>
+            <p>Dégustez au restaurant</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="restaurant_part">
+      <div class="restaurant_container">
+        <h2 id="restaurants" class="restaurant_title">Restaurants</h2>
+      </div>
+      <div class="restaurant_grid">
+        <div class="restaurant_card">
+          <a href="./webpages/omf_rest_la_palette_du_gout.html">
+            <div class="image">
+              <img src="./images/restaurants/Menilmontant.jpg" alt="" />
+              <div class="restaurant_new_notif">
+                <p>Nouveau</p>
+              </div>
+            </div>
+          </a>
+          <div class="restaurant_card_description">
+            <div class="restaurant_card_name">
+              <h3>La palette du goût</h3>
+              <p>Ménilmontant</p>
+            </div>
+            <div class="like">
+              <i class="far fa-heart like--empty" aria-hidden="true">
+                <i class="fas fa-heart like--full" aria-hidden="true"></i>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="restaurant_card">
+          <a href="./webpages/omf_rest_la_note_enchantee.html">
+            <div class="image">
+              <img src="./images/restaurants/Charonne.jpg" alt="" />
+              <div class="restaurant_new_notif">
+                <p>Nouveau</p>
+              </div>
+            </div>
+          </a>
+          <div class="restaurant_card_description">
+            <div class="restaurant_card_name">
+              <h3>La note enchantée</h3>
+              <p>Charonne</p>
+            </div>
+            <div class="like">
+              <i class="far fa-heart like--empty" aria-hidden="true">
+                <i class="fas fa-heart like--full" aria-hidden="true"></i>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="restaurant_card">
+          <a href="./webpages/omf_rest_a_la_francaise.html">
+            <div class="image">
+              <img src="./images/restaurants/Cite_rouge.jpg" alt="" />
+            </div>
+          </a>
+          <div class="restaurant_card_description">
+            <div class="restaurant_card_name">
+              <h3>À la française</h3>
+              <p>Cité Rouge</p>
+            </div>
+            <div class="like">
+              <i class="far fa-heart like--empty" aria-hidden="true">
+                <i class="fas fa-heart like--full" aria-hidden="true"></i>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="restaurant_card">
+          <a href="./webpages/omf_rest_le_delice_des_sens.html">
+            <div class="image">
+              <img src="./images/restaurants/Folie_mericourt.jpg" alt="" />
+            </div>
+          </a>
+          <div class="restaurant_card_description">
+            <div class="restaurant_card_name">
+              <h3>Le délice des sens</h3>
+              <p>Folie-Méricourt</p>
+            </div>
+            <div class="like">
+              <i class="far fa-heart like--empty" aria-hidden="true">
+                <i class="fas fa-heart like--full" aria-hidden="true"></i>
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer_container">
+        <p class="footer_logo">ohmyfood</p>
+        <div class="footer_content">
+          <div class="footer_icons_text">
+            <a class="footer_links" href="#">
+              <i class="fas fa-utensils"></i>
+              <p>Proposer un restaurant</p>
+            </a>
+          </div>
+          <div class="footer_icons_text">
+            <a class="footer_links" href="#">
+              <i class="fas fa-hands-helping"></i>
+              Devenir partenaire
+            </a>
+          </div>
+          <a class="footer_links" href="#">Mentions légales</a>
+          <a class="footer_links" href="mailto:contact@ohmyfood.com">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
