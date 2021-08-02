@@ -13,51 +13,69 @@
       crossorigin="anonymous"
     />
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="./css/style.min.css" />
     <!-- Scripts -->
     <script src="./js/indexgridcell.js"></script>
     <script src="./js/script.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/style.min.css" />
   </head>
-  <body>
+  <body id="body">
     <header>
-        <div class="header_logo" role="img" aria-label="Logo FishEye" tabindex="2">
-            <img src="./images/fisheye_logo.png" alt="logo fisheye" >
-        </div>
-        <nav class="index_navbar" aria-label="Main Menu"> 
-            <ul role="menubar" aria-label="Barre de navigation" aria-labelledby="menu">
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Portrait</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Art</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Fashion</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Architecture</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Travel</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Sport</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Animals</a>
-                </li>
-                <li role="none" tabindex="3">
-                    <a role="menuitem" href="#">#Events</a>
-                </li>
-            </ul>
-        </nav>
-        <h1 tabindex="4">Nos Photographes</h1>
+      <a
+        href=""
+        class="header_logo"
+        role="img"
+        aria-label="Logo FishEye"
+        tabindex="2"
+      >
+        <img src="./images/fisheye_logo.png" alt="Fisheye Home page" />
+      </a>
+      <nav class="index_navbar" aria-label="Main Menu">
+        <ul
+          role="menubar"
+          aria-label="Barre de navigation"
+          aria-labelledby="menu"
+        >
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('portrait')">#Portrait</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('art')">#Art</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('fashion')">#Fashion</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('architecture')"
+              >#Architecture</a
+            >
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('travel')">#Travel</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('sport')">#Sport</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('animals')">#Animals</a>
+          </li>
+          <li role="none" tabindex="3">
+            <a role="menuitem" href="#" onclick="test('events')">#Events</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 tabindex="4">Nos Photographes</h1>
     </header>
     <main>
-        <div id="photographers_grid" role="grid" aria-label="Photographes" aria-colcount="3" aria-rowcount="2"></div>
+      <div
+        id="photographers_grid"
+        role="grid"
+        aria-label="Photographes"
+        aria-colcount="3"
+        aria-rowcount="2"
+      ></div>
     </main>
-    <footer>
-    </footer>
+    <footer></footer>
   </body>
 </html>
