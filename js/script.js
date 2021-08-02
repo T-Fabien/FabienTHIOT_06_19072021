@@ -39,7 +39,7 @@ function createHomePageHtml(data) {
 }
 
 // Filtre JSON
-function test(tag) {
+function photographers_filter(tag) {
   // Cherche la grid
   var mainContainer = document.getElementById("photographers_grid");
   mainContainer.innerHTML = ``;
