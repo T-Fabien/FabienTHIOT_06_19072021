@@ -26,16 +26,16 @@
         class="header_logo"
         role="img"
         aria-label="Logo FishEye"
-        tabindex="2"
+        tabindex="1"
       >
-        <img src="../images/fisheye_logo.png" alt="Fisheye logo" />
+        <img src="../images/fisheye_logo.png" alt="Fisheye Home page" />
       </a>
     </header>
     <main>
       <article id="photographers_card" role="article"></article>
       <div class="filter">
         <label for="photo_filter">Trier par</label>
-        <select name="photo_filter" id="photo_filter">
+        <select name="photo_filter" id="photo_filter" onchange="photograph_image()">
           <option value="popular">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Title</option>
@@ -45,8 +45,8 @@
         id="photo_grid"
         role="grid"
         aria-label="Photos"
-        aria-colcount="3"
-        aria-rowcount="2"
+        aria-colcount="4"
+        aria-rowcount="3"
       ></div>
     </main>
     <footer></footer>

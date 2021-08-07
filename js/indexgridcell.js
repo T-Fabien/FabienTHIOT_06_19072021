@@ -59,7 +59,7 @@ function createGridCell(
             <div tabindex="${3 * i + 6}">
                 <p class="location">${city}, ${country}</p>
                 <p class="tagline">${tagline}</p>
-                <p class="price">${price}/jour</p>
+                <p class="price">${price}€/jour</p>
             </div>
             <div tabindex="${3 * i + 7}" class="tags">
             ${tag_links}

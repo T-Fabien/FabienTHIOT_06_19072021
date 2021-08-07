@@ -50,7 +50,7 @@ function create_html_photograph_card(
   var tag_links = ``;
   for (var j = 0; j < tags.length; j++) {
     tag_links += `
-          <a tabindex="${3 * i + 7}" href="#">
+          <a tabindex="4" href="#">
               <p>#${tags[j]}</p>
           </a>
           `;
@@ -58,45 +58,121 @@ function create_html_photograph_card(
 
   photograph_card.innerHTML += `
             <div class="first_cell article_cell">
-                <div tabindex="${3 * i + 5}">
+                <div tabindex="2">
                     <h1>${name}</h1>
                 </div>
-                <div tabindex="${3 * i + 6}">
+                <div tabindex="3">
                     <p class="location">${city}, ${country}</p>
                     <p class="tagline">${tagline}</p>
                 </div>
-                <div tabindex="${3 * i + 7}" class="tags">
+                <div tabindex="4" class="tags">
                 ${tag_links}
                 </div>
             </div>
             <div class="second_cell article_cell">
-            <button>Contactez-moi</button>
+            <button tabindex="5">Contactez-moi</button>
             </div>
             <div class="third_cell article_cell">
-            <img src="../images/Photographers ID Photos/${portrait}" alt="Portrait de ${name}">
+            <img src="../images/Photographers ID Photos/${portrait}" alt="${name}" tabindex="6">
             </div>
         </div>
         `;
 
-  image_filter(id, name);
+  photograph_image();
 }
 
-function image_filter(photographerId, name) {
-  var grid = document.getElementById("photo_grid");
-  var firstname = name.substring(0, name.indexOf(" "));
+function photograph_image_filter(filter_value) {
+  var filter = filter_value;
+  var data = [];
 
-  for (var i = 0; i < jsondata.media.length; i++) {
-    if (jsondata.media[i].photographerId === photographerId) {
+  if (filter === "popular") {
+    for (var i = 0; i < jsondata.media.length; i++) {
+      if (
+        jsondata.media[i].photographerId === jsondata.photographers[link_id].id
+      ) {
+        data.push(jsondata.media[i]);
+      }
+    }
+    data.sort(function (b, a) {
+      return a.likes - b.likes;
+    });
+  }
+  if (filter === "date") {
+    for (var i = 0; i < jsondata.media.length; i++) {
+      if (
+        jsondata.media[i].photographerId === jsondata.photographers[link_id].id
+      ) {
+        data.push(jsondata.media[i]);
+      }
+    }
+    data.sort(function (b, a) {
+      return a.date - b.date;
+    });
+  }
+  if (filter === "title") {
+    for (var i = 0; i < jsondata.media.length; i++) {
+      if (
+        jsondata.media[i].photographerId === jsondata.photographers[link_id].id
+      ) {
+        data.push(jsondata.media[i]);
+      }
+    }
+    data.sort((a, b) => {
+      if (a.title < b.title) return -1;
+      return a.title > b.title ? 1 : 0;
+    });
+  }
+
+  return data;
+}
+
+function photograph_image() {
+  var filter_value = document.getElementById("photo_filter").value;
+  var grid = document.getElementById("photo_grid");
+  grid.innerHTML = ``;
+
+  var firstname = jsondata.photographers[link_id].name;
+  firstname = firstname.substring(0, firstname.indexOf(" "));
+  firstname = firstname.replace(/-/g, " ");
+
+  var filtered_data = [];
+  filtered_data = photograph_image_filter(filter_value);
+
+  for (var i = 0; i < filtered_data.length; i++) {
+    console.log(filtered_data[i].image);
+    if (filtered_data[i].video === undefined) {
+      grid.innerHTML += `
+        <article class="gridcell" role="cell">
+        <a tabindex="10" href=""> 
+        <img src="../images/${firstname}/${filtered_data[i].image.replace(
+        /[-\s]/g,
+        "_"
+      )}" alt="${filtered_data[i].title}">
+        </a>
+                <div tabindex="11" class="photo_desc">
+                    <p class="photo_name">${filtered_data[i].title}</p>
+                    <p class="like">${
+                      filtered_data[i].likes
+                    }<i class="fas fa-heart" aria-label="likes"></i></p> 
+                </div>
+        </article>
+        `;
+    } else {
       grid.innerHTML += `
     <article class="gridcell" role="cell">
-        <img src="../images/${firstname}/${jsondata.media[i].image.replace(/\s/g,'_')}" alt="Portrait de ${name}">
-            <div tabindex="${3 * i + 6}" class="photo_desc">
-                <p class="photo_name">${jsondata.media[i].title}</p>
-                <p class="like">${jsondata.media[i].likes}<i class="fas fa-heart"></i></p> 
+        <video controls tabindex="10">
+            <source src="../images/${firstname}/${
+        filtered_data[i].video
+      }" type="video/mp4">
+        </video>
+            <div tabindex="11" class="photo_desc">
+                <p class="photo_name">${filtered_data[i].title}</p>
+                <p class="like">${
+                  filtered_data[i].likes
+                }<i class="fas fa-heart"></i></p> 
             </div>
     </article>
     `;
     }
   }
 }
-
