@@ -70,13 +70,50 @@ function create_html_photograph_card(
                 </div>
             </div>
             <div class="second_cell article_cell">
-            <button tabindex="5">Contactez-moi</button>
+            <div class="open-btn">
+            <button id="show-modal">Contactez-moi</button>
+          </div>
+          <div class="modal modal--hidden">
+            <div class="modal_contents">
+              <form id="open-form">
+                <div class="form_title">
+                <h1>Contactez-moi ${name}</h1>
+                <span class="close_modal" aria-label="fermer la modale">X</span>
+                </div>
+                <label for="firstname">Prénom</label><input type="text" name="firstname" placeholder="Prénom" aria-labelledby="First name">
+                <label for="name">Nom</label><input type="text" name="name" placeholder="Nom" aria-labelledby="Last name">
+                <label for="email">Email</label><input type="text" name="email" placeholder="VotreEmail@email.com" aria-labelledby="Email">
+                <label for="message">Votre message</label><textarea placeholder="Message"aria-labelledby="Your message"></textarea>
+                <button aria-label="Send">Envoyer</button>
+              </form>
             </div>
+          </div>
             <div class="third_cell article_cell">
             <img src="../images/Photographers ID Photos/${portrait}" alt="${name}" tabindex="6">
             </div>
         </div>
         `;
+
+  // Form
+  const toggleModal = () => {
+    document.querySelector(".modal").classList.toggle("modal--hidden");
+  };
+
+  document.querySelector('.close_modal').addEventListener("click", toggleModal);
+
+  document.querySelector("#show-modal").addEventListener("click", toggleModal);
+
+  document.querySelector("#open-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    toggleModal();
+    var formData = new FormData(document.querySelector("#open-form"));
+    console.log(
+      "Firstname:" + formData.get("firstname"),
+      "Name:" + formData.get("name"),
+      "Email:" + formData.get("email"),
+      "Message:" + formData.get("message")
+    );
+  });
 
   photograph_image();
 }
@@ -139,7 +176,6 @@ function photograph_image() {
   filtered_data = photograph_image_filter(filter_value);
 
   for (var i = 0; i < filtered_data.length; i++) {
-    console.log(filtered_data[i].image);
     if (filtered_data[i].video === undefined) {
       grid.innerHTML += `
         <article class="gridcell" role="cell">
@@ -161,18 +197,38 @@ function photograph_image() {
       grid.innerHTML += `
     <article class="gridcell" role="cell">
         <video controls tabindex="10">
-            <source src="../images/${firstname}/${
-        filtered_data[i].video
-      }" type="video/mp4">
+            <source src="../images/${firstname}/${filtered_data[i].video}" type="video/mp4">
         </video>
             <div tabindex="11" class="photo_desc">
                 <p class="photo_name">${filtered_data[i].title}</p>
-                <p class="like">${
-                  filtered_data[i].likes
-                }<i class="fas fa-heart"></i></p> 
+                <p class="like">${filtered_data[i].likes}<i class="fas fa-heart"></i></p> 
             </div>
     </article>
     `;
     }
   }
 }
+
+class MediaFactory {
+  constructor(type) {
+    switch (type) {
+      case "image":
+        return new Image();
+      case "video":
+        return new Video();
+    }
+  }
+}
+
+class Image {
+  constructor() {
+    return `<img tabindex=0 class )=`;
+  }
+}
+class Video {
+  constructor() {
+    return `<video controls type= "video/mp4" tabindex=0 class )=`;
+  }
+}
+
+// export default MediaFactory;
