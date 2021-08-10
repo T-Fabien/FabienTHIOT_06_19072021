@@ -88,9 +88,10 @@ function create_html_photograph_card(
               </form>
             </div>
           </div>
-            <div class="third_cell article_cell">
-            <img src="../images/Photographers ID Photos/${portrait}" alt="${name}" tabindex="6">
-            </div>
+          </div>
+        <div class="third_cell article_cell">
+        <img src="../images/Photographers ID Photos/${portrait}" alt="${name}" tabindex="6">
+        </div>
         </div>
         `;
 
