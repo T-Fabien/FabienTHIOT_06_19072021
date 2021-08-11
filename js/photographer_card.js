@@ -80,10 +80,10 @@ function create_html_photograph_card(
                 <h1>Contactez-moi ${name}</h1>
                 <span class="close_modal" aria-label="fermer la modale">X</span>
                 </div>
-                <label for="firstname">Prénom</label><input type="text" name="firstname" placeholder="Prénom" aria-labelledby="First name">
-                <label for="name">Nom</label><input type="text" name="name" placeholder="Nom" aria-labelledby="Last name">
-                <label for="email">Email</label><input type="text" name="email" placeholder="VotreEmail@email.com" aria-labelledby="Email">
-                <label for="message">Votre message</label><textarea placeholder="Message"aria-labelledby="Your message"></textarea>
+                <label for="firstname">Prénom</label><input type="text" id="firstname" name="firstname" placeholder="Prénom" aria-labelledby="First name" />
+                <label for="name">Nom</label><input type="text" id="name" name="name" placeholder="Nom" aria-labelledby="Last name"/>
+                <label for="email">Email</label><input type="text" id="email" name="email" placeholder="VotreEmail@email.com" aria-labelledby="Email"/>
+                <label for="message">Votre message</label><textarea id="message" placeholder="Message"aria-labelledby="Your message"></textarea>
                 <button aria-label="Send">Envoyer</button>
               </form>
             </div>
@@ -215,7 +215,7 @@ function photograph_image() {
                 <p class="photo_name">${filtered_data[i].title}</p>
                 <p class="like">${
                   filtered_data[i].likes
-                }<i class="fas fa-heart"></i></p> 
+                }<i class="fas fa-heart" aria-label="likes"></i></p> 
             </div>
     </article>
     `;

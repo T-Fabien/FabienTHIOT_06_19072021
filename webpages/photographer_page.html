@@ -24,7 +24,6 @@
       <a
         href="../index.html"
         class="header_logo"
-        role="img"
         aria-label="Logo FishEye"
         tabindex="1"
       >
@@ -32,10 +31,14 @@
       </a>
     </header>
     <main>
-      <article id="photographers_card" role="article"></article>
+      <article id="photographers_card"></article>
       <div class="filter">
         <label for="photo_filter">Trier par</label>
-        <select name="photo_filter" id="photo_filter" onchange="photograph_image()">
+        <select
+          name="photo_filter"
+          id="photo_filter"
+          onchange="photograph_image()"
+        >
           <option value="popular">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Title</option>
@@ -48,14 +51,13 @@
         aria-colcount="4"
         aria-rowcount="3"
       ></div>
-      <div id="modal_lightbox"class="lightbox">
+      <div id="modal_lightbox" class="lightbox">
         <span class="close cursor" onclick="closeModal()">&times;</span>
-        <div id="lightbox-content"class="modal_lightbox-content">
-      
+        <div id="lightbox-content" class="modal_lightbox-content">
           <!-- Next/previous controls -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
+        </div>
       </div>
     </main>
     <footer></footer>
