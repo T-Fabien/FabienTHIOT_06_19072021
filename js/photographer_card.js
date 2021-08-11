@@ -100,7 +100,7 @@ function create_html_photograph_card(
     document.querySelector(".modal").classList.toggle("modal--hidden");
   };
 
-  document.querySelector('.close_modal').addEventListener("click", toggleModal);
+  document.querySelector(".close_modal").addEventListener("click", toggleModal);
 
   document.querySelector("#show-modal").addEventListener("click", toggleModal);
 
@@ -167,6 +167,7 @@ function photograph_image_filter(filter_value) {
 function photograph_image() {
   var filter_value = document.getElementById("photo_filter").value;
   var grid = document.getElementById("photo_grid");
+  var lightbox = document.getElementById("lightbox-content");
   grid.innerHTML = ``;
 
   var firstname = jsondata.photographers[link_id].name;
@@ -180,12 +181,11 @@ function photograph_image() {
     if (filtered_data[i].video === undefined) {
       grid.innerHTML += `
         <article class="gridcell" role="cell">
-        <a tabindex="10" href=""> 
-        <img src="../images/${firstname}/${filtered_data[i].image.replace(
-        /[-\s]/g,
-        "_"
-      )}" alt="${filtered_data[i].title}">
-        </a>
+        <img tabindex="10" src="../images/${firstname}/${filtered_data[
+        i
+      ].image.replace(/[-\s]/g, "_")}" alt="${
+        filtered_data[i].title
+      }" onclick="openModal();currentSlide(${i + 1})">
                 <div tabindex="11" class="photo_desc">
                     <p class="photo_name">${filtered_data[i].title}</p>
                     <p class="like">${
@@ -194,17 +194,38 @@ function photograph_image() {
                 </div>
         </article>
         `;
+      lightbox.innerHTML += `
+        <div class="mySlides">
+            <img src="../images/${firstname}/${filtered_data[i].image.replace(
+        /[-\s]/g,
+        "_"
+      )}" alt="${filtered_data[i].title}">
+      <p class="photo_name">${filtered_data[i].title}</p>
+          </div>
+        `;
     } else {
       grid.innerHTML += `
     <article class="gridcell" role="cell">
         <video controls tabindex="10">
-            <source src="../images/${firstname}/${filtered_data[i].video}" type="video/mp4">
+            <source src="../images/${firstname}/${
+        filtered_data[i].video
+      }" type="video/mp4" onclick="openModal();currentSlide(${i + 1})">
         </video>
             <div tabindex="11" class="photo_desc">
                 <p class="photo_name">${filtered_data[i].title}</p>
-                <p class="like">${filtered_data[i].likes}<i class="fas fa-heart"></i></p> 
+                <p class="like">${
+                  filtered_data[i].likes
+                }<i class="fas fa-heart"></i></p> 
             </div>
     </article>
+    `;
+      lightbox.innerHTML += `
+    <div class="mySlides">
+        <video controls tabindex="10">
+        <source src="../images/${firstname}/${filtered_data[i].video}" type="video/mp4">
+    </video>
+    <p class="photo_name">${filtered_data[i].title}</p>
+      </div>
     `;
     }
   }
