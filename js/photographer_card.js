@@ -1,3 +1,4 @@
+import MediaFactory from "./media.js";
 // Récupération du Json
 
 let jsondata;
@@ -71,7 +72,7 @@ function create_html_photograph_card(
             </div>
             <div class="second_cell article_cell">
             <div class="open-btn">
-            <button id="show-modal">Contactez-moi</button>
+            <button id="show-modal" tabindex="5">Contactez-moi</button>
           </div>
           <div class="modal modal--hidden">
             <div class="modal_contents">
@@ -80,10 +81,18 @@ function create_html_photograph_card(
                 <h1>Contactez-moi ${name}</h1>
                 <span class="close_modal" aria-label="fermer la modale">X</span>
                 </div>
+                <div>
                 <label for="firstname">Prénom</label><input type="text" id="firstname" name="firstname" placeholder="Prénom" aria-labelledby="First name" />
+                </div>
+                <div>
                 <label for="name">Nom</label><input type="text" id="name" name="name" placeholder="Nom" aria-labelledby="Last name"/>
+                </div>
+                <div>
                 <label for="email">Email</label><input type="text" id="email" name="email" placeholder="VotreEmail@email.com" aria-labelledby="Email"/>
-                <label for="message">Votre message</label><textarea id="message" placeholder="Message"aria-labelledby="Your message"></textarea>
+                </div>
+                <div>
+                <label for="message">Votre message</label><textarea id="message" placeholder="Message" aria-labelledby="Your message"></textarea>
+                </div>
                 <button aria-label="Send">Envoyer</button>
               </form>
             </div>
@@ -112,9 +121,24 @@ function create_html_photograph_card(
       "Firstname:" + formData.get("firstname"),
       "Name:" + formData.get("name"),
       "Email:" + formData.get("email"),
-      "Message:" + formData.get("message")
+      "Message:" + document.getElementById("message").value
     );
   });
+
+  // Select
+  document.querySelector("#photo_filter").addEventListener("change", photograph_image);
+
+  // Lightbox
+  document.querySelector("#photo_grid").addEventListener('keydown',function(event) {
+    switch (event.keyCode) {
+        case 37: // Left Arrow
+            plusSlides(-1);
+            break;
+        case 39: //Right Arrow
+            plusSlides(1);
+            break;
+    }
+});
 
   photograph_image();
 }
@@ -165,6 +189,7 @@ function photograph_image_filter(filter_value) {
 }
 
 function photograph_image() {
+  var Media = new MediaFactory();
   var filter_value = document.getElementById("photo_filter").value;
   var grid = document.getElementById("photo_grid");
   var lightbox = document.getElementById("lightbox-content");
@@ -178,79 +203,13 @@ function photograph_image() {
   filtered_data = photograph_image_filter(filter_value);
 
   for (var i = 0; i < filtered_data.length; i++) {
+    var Media = new MediaFactory();
     if (filtered_data[i].video === undefined) {
-      grid.innerHTML += `
-        <article class="gridcell" role="cell">
-        <img tabindex="10" src="../images/${firstname}/${filtered_data[
-        i
-      ].image.replace(/[-\s]/g, "_")}" alt="${
-        filtered_data[i].title
-      }" onclick="openModal();currentSlide(${i + 1})">
-                <div tabindex="11" class="photo_desc">
-                    <p class="photo_name">${filtered_data[i].title}</p>
-                    <p class="like">${
-                      filtered_data[i].likes
-                    }<i class="fas fa-heart" aria-label="likes"></i></p> 
-                </div>
-        </article>
-        `;
-      lightbox.innerHTML += `
-        <div class="mySlides">
-            <img src="../images/${firstname}/${filtered_data[i].image.replace(
-        /[-\s]/g,
-        "_"
-      )}" alt="${filtered_data[i].title}">
-      <p class="photo_name">${filtered_data[i].title}</p>
-          </div>
-        `;
+    Media = new MediaFactory('Image');
     } else {
-      grid.innerHTML += `
-    <article class="gridcell" role="cell">
-        <video controls tabindex="10">
-            <source src="../images/${firstname}/${
-        filtered_data[i].video
-      }" type="video/mp4" onclick="openModal();currentSlide(${i + 1})">
-        </video>
-            <div tabindex="11" class="photo_desc">
-                <p class="photo_name">${filtered_data[i].title}</p>
-                <p class="like">${
-                  filtered_data[i].likes
-                }<i class="fas fa-heart" aria-label="likes"></i></p> 
-            </div>
-    </article>
-    `;
-      lightbox.innerHTML += `
-    <div class="mySlides">
-        <video controls tabindex="10">
-        <source src="../images/${firstname}/${filtered_data[i].video}" type="video/mp4">
-    </video>
-    <p class="photo_name">${filtered_data[i].title}</p>
-      </div>
-    `;
+    Media = new MediaFactory('Video');
     }
+    grid.innerHTML += Media.grid(firstname, filtered_data, i);
+    lightbox.innerHTML += Media.lightbox(firstname, filtered_data, i);
   }
 }
-
-class MediaFactory {
-  constructor(type) {
-    switch (type) {
-      case "image":
-        return new Image();
-      case "video":
-        return new Video();
-    }
-  }
-}
-
-class Image {
-  constructor() {
-    return `<img tabindex=0 class )=`;
-  }
-}
-class Video {
-  constructor() {
-    return `<video controls type= "video/mp4" tabindex=0 class )=`;
-  }
-}
-
-// export default MediaFactory;

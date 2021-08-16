@@ -14,7 +14,8 @@
     />
 
     <!-- Scripts -->
-    <script src="../js/photographer_card.js"></script>
+    <script type="module" src="../js/media.js"></script>
+    <script type="module" src="../js/photographer_card.js"></script>
     <script src="../js/gallery.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../css/style.min.css" />
@@ -37,7 +38,7 @@
         <select
           name="photo_filter"
           id="photo_filter"
-          onchange="photograph_image()"
+          
         >
           <option value="popular">Popularité</option>
           <option value="date">Date</option>
@@ -52,11 +53,11 @@
         aria-rowcount="3"
       ></div>
       <div id="modal_lightbox" class="lightbox">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <span class="close cursor" onclick="closeModal()" tabindex="1">&times;</span>
         <div id="lightbox-content" class="modal_lightbox-content">
           <!-- Next/previous controls -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <a class="prev" onclick="plusSlides(-1)" tabindex="4">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)" tabindex="5">&#10095;</a>
         </div>
       </div>
     </main>
