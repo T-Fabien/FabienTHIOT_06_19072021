@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
@@ -25,7 +26,11 @@ function showSlides(n) {
   for (i = 0; i < slides.length; i += 1) {
     slides[i].style.display = 'none';
   }
-  slides[slideIndex - 1].style.display = 'flex';
+  try {
+    slides[slideIndex - 1].style.display = 'flex';
+  } catch (err) {
+    console.log(`error: ${err}`);
+  }
 }
 
 // Next/previous controls

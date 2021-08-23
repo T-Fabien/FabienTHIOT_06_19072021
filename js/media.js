@@ -1,5 +1,6 @@
-import Image from './Image';
-import Video from './Video';
+/* eslint-disable import/extensions */
+import Image from './Image.js';
+import Video from './Video.js';
 
 class MediaFactory {
   constructor(type) {

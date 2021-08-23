@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable import/extensions */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
-import MediaFactory from './Media';
+import MediaFactory from './Media.js';
 
 // Récupération du Json
 
@@ -157,7 +159,7 @@ function CreateHtmlPhotographCard(
     event.preventDefault();
     toggleModal();
     const formData = new FormData(document.querySelector('#open-form'));
-    Console.log(
+    console.log(
       `Firstname:${formData.get('firstname')}`,
       `Name:${formData.get('name')}`,
       `Email:${formData.get('email')}`,
@@ -168,7 +170,7 @@ function CreateHtmlPhotographCard(
   // Select
   document
     .querySelector('#photo_filter')
-    .addEventListener('change', photograph_image);
+    .addEventListener('change', PhotographMedia);
 
   // Lightbox
   document.querySelector('#photo_grid').addEventListener('keydown', (event) => {
@@ -214,5 +216,5 @@ fetch('../js/data.json')
     CreatePhotographCard(LinkId);
   })
   .catch((err) => {
-    Console.log(`error: ${err}`);
+    console.log(`error: ${err}`);
   });
