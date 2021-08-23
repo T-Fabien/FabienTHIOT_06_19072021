@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // Filtre JSON
-function photographers_filter(tag) {
+function PhotographersFilter(tag) {
   // Cherche la grid
-  var mainContainer = document.getElementById("photographers_grid");
+  const mainContainer = document.getElementById('photographers_grid');
   mainContainer.innerHTML = ``;
 
-  for (var i = 0; i < jsondata.photographers.length; i++) {
+  for (let i = 0; i < jsondata.photographers.length; i += 1) {
     if (jsondata.photographers[i].tags.includes(tag)) {
       createGridCell(
         i,

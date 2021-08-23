@@ -14,7 +14,9 @@
     />
 
     <!-- Scripts -->
-    <script type="module" src="../js/media.js"></script>
+    <script type="module" src="../js/Image.js"></script>
+    <script type="module" src="../js/Video.js"></script>
+    <script type="module" src="../js/Media.js"></script>
     <script type="module" src="../js/photographer_card.js"></script>
     <script src="../js/gallery.js"></script>
     <!-- CSS -->
@@ -35,11 +37,7 @@
       <article id="photographers_card"></article>
       <div class="filter">
         <label for="photo_filter">Trier par</label>
-        <select
-          name="photo_filter"
-          id="photo_filter"
-          
-        >
+        <select name="photo_filter" id="photo_filter">
           <option value="popular">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Title</option>
@@ -53,7 +51,9 @@
         aria-rowcount="3"
       ></div>
       <div id="modal_lightbox" class="lightbox">
-        <span class="close cursor" onclick="closeModal()" tabindex="1">&times;</span>
+        <span class="close cursor" onclick="closeModal()" tabindex="1"
+          >&times;</span
+        >
         <div id="lightbox-content" class="modal_lightbox-content">
           <!-- Next/previous controls -->
           <a class="prev" onclick="plusSlides(-1)" tabindex="4">&#10094;</a>

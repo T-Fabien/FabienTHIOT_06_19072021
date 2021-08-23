@@ -1,15 +1,15 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // Récupération du Json
 
 let jsondata;
 
-fetch("./js/data.json")
-  .then(function (data) {
-    return data.json();
-  })
-  .then(function (data) {
+fetch('./js/data.json')
+  .then((data) => data.json())
+  .then((data) => {
     jsondata = data;
     createHomePageHtml(data);
   })
-  .catch(function (err) {
-    console.log("error: " + err);
+  .catch((err) => {
+    Console.log(`error: ${err}`);
   });
