@@ -55,6 +55,7 @@ function PhotographMedia() {
   const FilterValue = document.getElementById('photo_filter').value;
   const grid = document.getElementById('photo_grid');
   const lightbox = document.getElementById('lightbox-content');
+  const TotalLikesDiv = document.getElementById('total-likes');
   grid.innerHTML = ``;
 
   let firstname = jsondata.photographers[LinkId].name;
@@ -63,6 +64,8 @@ function PhotographMedia() {
 
   let FilteredData = [];
   FilteredData = PhotographMediaFilter(FilterValue);
+
+  let totalLikes = 0;
 
   for (let i = 0; i < FilteredData.length; i += 1) {
     let Media = new MediaFactory();
@@ -73,7 +76,11 @@ function PhotographMedia() {
     }
     grid.innerHTML += Media.grid(firstname, FilteredData, i);
     lightbox.innerHTML += Media.lightbox(firstname, FilteredData, i);
+    totalLikes += FilteredData[i].likes;
   }
+
+  TotalLikesDiv.innerHTML = `<p>${totalLikes}</p>
+  <i class="fas fa-heart heart heart-global"></i>`;
 }
 
 // Crée la carte du photographe
@@ -87,6 +94,7 @@ function CreateHtmlPhotographCard(
   country,
   tagline,
   tags,
+  price,
   PhotographCard
 ) {
   let TagLinks = ``;
@@ -146,6 +154,9 @@ function CreateHtmlPhotographCard(
         </div>
         `;
 
+  const PriceContainer = document.getElementById('price');
+  PriceContainer.innerHTML = `<p> ${price} / jour </p>`;
+
   // Form
   const toggleModal = () => {
     document.querySelector('.modal').classList.toggle('modal--hidden');
@@ -203,6 +214,7 @@ function CreatePhotographCard(LinkId) {
     jsondata.photographers[LinkId].country,
     jsondata.photographers[LinkId].tagline,
     jsondata.photographers[LinkId].tags,
+    jsondata.photographers[LinkId].price,
     PhotographCard
   );
 }
