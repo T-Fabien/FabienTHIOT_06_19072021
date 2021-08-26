@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable no-restricted-globals */
@@ -155,7 +156,7 @@ function CreateHtmlPhotographCard(
         `;
 
   const PriceContainer = document.getElementById('price');
-  PriceContainer.innerHTML = `<p> ${price} / jour </p>`;
+  PriceContainer.innerHTML = `<p> ${price} € / jour </p>`;
 
   // Form
   const toggleModal = () => {

@@ -11,9 +11,10 @@ class Image {
     }" onclick="openModal();currentSlide(${i + 1})">
             <div tabindex="${i * 2 + 11}" class="photo_desc">
                 <p class="photo_name">${FilteredData[i].title}</p>
-                <p class="like">${
-                  FilteredData[i].likes
-                }<i class="fas fa-heart" aria-label="likes"></i></p> 
+                <div class="like_count">
+                <p class="like">${FilteredData[i].likes}</p>
+                <div id="likes_id_${i}"onclick="AddLike(this.id)">
+                <i class="heart far fa-heart" aria-label="likes"></i></div></div> 
             </div>
     </article>
       `;
