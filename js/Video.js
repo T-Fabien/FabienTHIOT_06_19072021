@@ -15,7 +15,7 @@ class Video {
             <div class="like_count">
             <p class="like">${FilteredData[i].likes}</p>
             <div id="likes_id_${i}"onclick="AddLike(this.id)">
-            <i class="heart far fa-heart" aria-label="likes"></i></div></div> 
+            <span class="heart far fa-heart" aria-label="likes"></span></div></div> 
         </div>
 </article>
     `;
